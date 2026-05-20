@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Happy Birthday 💖</title>
+  <title>Birthday Invitation ✨</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -28,18 +27,18 @@
     }
 
     /* BACKGROUND BLUR */
-
-    .bg{
+    .bg-blur{
       position:fixed;
       inset:0;
       z-index:-2;
+      overflow:hidden;
     }
 
-    .bg img{
+    .bg-blur img{
       width:100%;
       height:100%;
       object-fit:cover;
-      filter:blur(40px) brightness(0.4);
+      filter:blur(35px) brightness(0.45);
       transform:scale(1.2);
     }
 
@@ -68,31 +67,30 @@
       display:flex;
       flex-direction:column;
       justify-content:center;
+      align-items:center;
       text-align:center;
-      animation:fadeUp 1s ease;
+      position:relative;
     }
 
     .badge{
-      width:max-content;
-      margin:auto;
-      margin-bottom:20px;
-      background:rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.15);
       padding:10px 18px;
       border-radius:999px;
-      backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,0.1);
       font-size:13px;
+      backdrop-filter:blur(10px);
+      margin-bottom:22px;
+      border:1px solid rgba(255,255,255,0.15);
     }
-
-    /* FOTO COVER */
 
     .cover{
       width:100%;
-      height:540px;
+      height:520px;
       border-radius:32px;
       overflow:hidden;
       position:relative;
-      box-shadow:0 20px 40px rgba(0,0,0,0.35);
+      box-shadow:0 20px 40px rgba(0,0,0,0.4);
+      margin-bottom:25px;
+      animation:fadeUp 1s ease;
     }
 
     .cover img{
@@ -107,53 +105,72 @@
       inset:0;
       background:linear-gradient(
         to top,
-        rgba(0,0,0,0.8),
+        rgba(0,0,0,0.75),
         transparent
       );
     }
 
     .cover-text{
       position:absolute;
-      bottom:28px;
+      bottom:25px;
       left:25px;
       z-index:2;
       text-align:left;
     }
 
     .cover-text h1{
-      font-size:2.5rem;
+      font-size:2.3rem;
       font-weight:800;
       line-height:1.1;
     }
 
     .cover-text p{
       margin-top:10px;
-      font-size:0.95rem;
       opacity:0.9;
+      font-size:0.95rem;
     }
 
-    /* MESSAGE */
+    /* BUTTON */
 
-    .message{
-      margin-top:35px;
+    .btn{
+      margin-top:25px;
+      background:white;
+      color:#6f4cff;
+      border:none;
+      padding:15px 24px;
+      border-radius:18px;
+      font-weight:700;
+      cursor:pointer;
+      font-size:15px;
+      transition:0.3s;
+      box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover{
+      transform:scale(1.05);
+    }
+
+    /* EVENT */
+
+    .card{
       background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.1);
       backdrop-filter:blur(18px);
       border-radius:28px;
-      padding:28px;
+      padding:25px;
+      margin-top:25px;
       animation:fadeUp 1s ease;
     }
 
-    .message h2{
-      margin-bottom:18px;
-      font-size:1.5rem;
+    .card h2{
+      margin-bottom:16px;
+      font-size:1.4rem;
     }
 
-    .message p{
-      line-height:2;
+    .card p{
+      line-height:1.9;
       opacity:0.92;
-      margin-bottom:18px;
-      font-size:0.97rem;
+      font-size:0.96rem;
     }
 
     /* GALLERY */
@@ -183,8 +200,8 @@
       object-fit:cover;
       border-radius:28px;
       scroll-snap-align:center;
-      cursor:pointer;
       transition:0.35s;
+      cursor:pointer;
       box-shadow:0 10px 30px rgba(0,0,0,0.35);
     }
 
@@ -192,21 +209,34 @@
       transform:scale(1.03);
     }
 
-    /* MUSIC BUTTON */
+    /* LONG MESSAGE */
 
-    .music-btn{
+    .message{
+      margin-top:45px;
+    }
+
+    .message p{
+      margin-top:16px;
+      line-height:2;
+      opacity:0.9;
+      font-size:0.97rem;
+    }
+
+    /* MUSIC */
+
+    .music-button{
       position:fixed;
       right:20px;
       bottom:20px;
-      width:60px;
-      height:60px;
+      width:58px;
+      height:58px;
       border-radius:50%;
       border:none;
-      font-size:22px;
-      cursor:pointer;
       background:white;
+      font-size:20px;
+      cursor:pointer;
+      z-index:99;
       box-shadow:0 10px 25px rgba(0,0,0,0.3);
-      z-index:999;
     }
 
     /* LIGHTBOX */
@@ -214,28 +244,18 @@
     .lightbox{
       position:fixed;
       inset:0;
-      background:rgba(0,0,0,0.92);
+      background:rgba(0,0,0,0.9);
       display:none;
       justify-content:center;
       align-items:center;
-      z-index:9999;
+      z-index:999;
       padding:20px;
     }
 
     .lightbox img{
       width:100%;
       max-width:500px;
-      border-radius:28px;
-    }
-
-    /* FOOTER */
-
-    .footer{
-      text-align:center;
-      margin-top:50px;
-      margin-bottom:90px;
-      opacity:0.7;
-      font-size:13px;
+      border-radius:24px;
     }
 
     /* ANIMATION */
@@ -243,9 +263,8 @@
     @keyframes fadeUp{
       from{
         opacity:0;
-        transform:translateY(35px);
+        transform:translateY(30px);
       }
-
       to{
         opacity:1;
         transform:translateY(0);
@@ -254,11 +273,10 @@
 
   </style>
 </head>
-
 <body>
 
   <!-- BACKGROUND -->
-  <div class="bg">
+  <div class="bg-blur">
     <img src="images/foto1.jpg">
   </div>
 
@@ -270,16 +288,16 @@
     <section class="hero">
 
       <div class="badge">
-        🎂 Happy Birthday Bestie
+        💌 YOU ARE INVITED
       </div>
 
-      <!-- FOTO PORTRAIT -->
       <div class="cover">
 
+        <!-- FOTO PORTRAIT COVER -->
         <img src="images/foto1.jpg">
 
         <div class="cover-text">
-          <h1>Happy<br>Birthday 💖</h1>
+          <h1>Birthday<br>Party 🎂</h1>
 
           <p>
             another year older,
@@ -289,43 +307,25 @@
 
       </div>
 
+      <button class="btn" onclick="document.getElementById('event').scrollIntoView()">
+        🎉 Open Invitation
+      </button>
+
     </section>
 
-    <!-- UCAPAN -->
-    <section class="message">
+    <!-- EVENT -->
+    <section id="event" class="card">
 
-      <h2>💌 Special Message</h2>
-
-      <p>
-        Happy birthday buat manusia paling random,
-        paling berisik,
-        paling chaos,
-        tapi juga paling seru sedunia 😭✨
-      </p>
+      <h2>📅 Event Details</h2>
 
       <p>
-        Makasih udah selalu ada,
-        selalu bikin ketawa,
-        selalu jadi partner healing,
-        dan selalu support walaupun sama-sama bingung hidup 😌
-      </p>
-
-      <p>
-        Semoga tahun ini:
-        <br>✨ hidup makin bahagia
-        <br>✨ rezeki makin lancar
-        <br>✨ mental makin kuat
-        <br>✨ glow up terus
-        <br>✨ dan semoga crush kamu ga cuma ngelike story 🙏
-      </p>
-
-      <p>
-        Jangan berubah jadi asing ya.
-        Tetap jadi manusia absurd favorit aku 💖
-      </p>
-
-      <p>
-        Enjoy your special day bestieee 🎂✨
+        🗓 Saturday, 25 May 2026
+        <br>
+        ⏰ 19.00 WIB until tired
+        <br>
+        📍 Cafe Senja & Cerita
+        <br>
+        👗 Dresscode: White / Pastel
       </p>
 
     </section>
@@ -346,9 +346,40 @@
 
     </div>
 
-    <div class="footer">
-      dibuat penuh cinta + sedikit roasting 💜
-    </div>
+    <!-- MESSAGE -->
+    <section class="message card">
+
+      <h2>💜 A Little Message</h2>
+
+      <p>
+        Happy birthday buat manusia paling random,
+        paling ribut,
+        paling chaos,
+        tapi juga paling seru 😭✨
+      </p>
+
+      <p>
+        Makasih udah selalu ada,
+        jadi tempat cerita,
+        jadi teman healing,
+        dan jadi partner ketawa paling absurd.
+      </p>
+
+      <p>
+        Semoga tahun ini:
+        <br>✨ hidup makin bahagia
+        <br>✨ rezeki makin lancar
+        <br>✨ mental makin kuat
+        <br>✨ dan semoga crush kamu sadar diri 🙏
+      </p>
+
+      <p>
+        Enjoy your special day bestieee 💖
+      </p>
+
+    </section>
+
+    <div style="height:100px"></div>
 
   </div>
 
@@ -357,8 +388,7 @@
     <source src="music/lagu.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- MUSIC BUTTON -->
-  <button class="music-btn" onclick="playMusic()">
+  <button class="music-button" onclick="playMusic()">
     🎵
   </button>
 
@@ -369,18 +399,17 @@
 
   <script>
 
-    // PLAY MUSIC
+    // MUSIC
     function playMusic(){
       document.getElementById('music').play();
     }
 
-    // OPEN FOTO
+    // LIGHTBOX
     function openLightbox(src){
       document.getElementById('lightbox').style.display='flex';
       document.getElementById('lightbox-img').src=src;
     }
 
-    // CLOSE FOTO
     function closeLightbox(){
       document.getElementById('lightbox').style.display='none';
     }
