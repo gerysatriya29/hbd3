@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Bestie 🎂</title>
+  <title>Birthday Invitation ✨</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -20,9 +20,10 @@
       animation: gradientMove 10s ease infinite;
       display: flex;
       justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      padding: 20px;
+      align-items: flex-start;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 30px 20px;
     }
 
     @keyframes gradientMove {
@@ -140,10 +141,51 @@
       }
     }
 
+    .long-message {
+      margin-top: 28px;
+      text-align: left;
+      background: rgba(255,255,255,0.12);
+      padding: 22px;
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .long-message h2 {
+      margin-bottom: 14px;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .long-message p {
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
     .footer {
       margin-top: 20px;
       font-size: 12px;
       opacity: 0.8;
+    }
+
+    .event-box {
+      margin-top: 24px;
+      background: rgba(255,255,255,0.15);
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.2);
+      text-align: left;
+    }
+
+    .event-box h3 {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .event-box p {
+      line-height: 1.8;
+      font-size: 0.95rem;
     }
 
     .music-note {
@@ -198,7 +240,7 @@
   <div class="emoji" style="left:90%; animation-duration:6.5s;">✨</div>
 
   <div class="card">
-    <div class="badge">⚡ BESTIE BIRTHDAY ALERT ⚡</div>
+    <div class="badge">💌 YOU'RE INVITED 💌</div>
 
     <div class="photo">
       <!-- FOTO UTAMA -->
@@ -213,11 +255,14 @@
       <img src="foto5.jpg" alt="Foto 5">
     </div>
 
-    <h1>Happy Birthday <br><span class="nickname">Bestieee 🎂</span></h1>
+    <h1>Birthday Party <br><span class="nickname">Bestieee 🎂</span></h1>
 
     <p>
-      Selamat ulang tahun buat manusia paling <span class="highlight">random</span>,
-      paling <span class="highlight">berisik</span>, tapi tetap paling seru sedunia 😭✨
+      Hai bestieee ✨
+      <br><br>
+      Dengan penuh kebahagiaan, kekacauan,
+      dan sedikit overthinking 😭
+      kamu resmi diundang ke acara ulang tahun paling aesthetic tahun ini 💜
     </p>
 
     <p>
@@ -231,10 +276,59 @@
       karena bertambah umur artinya bertambah juga kewajiban mentraktir teman 😌☕
     </p>
 
-    <a href="#" class="btn">🎁 Claim Hadiah Bestie</a>
+    <a href="#lokasi" class="btn">🎉 Lihat Detail Acara</a>
+
+    <div class="event-box">
+      <h3>📅 Detail Acara</h3>
+      <p>
+        🗓️ Sabtu, 25 Mei 2026
+        <br>⏰ 19.00 WIB sampai lupa waktu
+        <br>📍 Cafe Senja & Cerita
+        <br>👗 Dresscode: Putih / Pastel
+      </p>
+    </div>
 
     <div class="music-note">
       🎵 “Hari ini bukan hari biasa, karena dunia pernah beruntung punya kamu.”
+    </div>
+
+    <div class="long-message">
+      <h2>📜 Special Message For You</h2>
+
+      <p>
+        Hari ini dunia officially bertambah satu manusia absurd yang usianya naik,
+        tapi tingkahnya masih sama 😭✨
+      </p>
+
+      <p>
+        Makasih udah jadi teman yang selalu ada,
+        selalu bikin ketawa,
+        selalu support walaupun kadang sama-sama bingung hidup mau dibawa kemana 🫠
+      </p>
+
+      <p>
+        Semoga tahun ini:
+        <br>✨ Rezeki makin lancar
+        <br>✨ Mental makin kuat
+        <br>✨ Tidur makin cukup
+        <br>✨ Drama makin jauh
+        <br>✨ Dan semoga crush kamu tidak cuma ngelike story 🙏
+      </p>
+
+      <p>
+        Jangan capek jadi orang baik ya.
+        Kalau dunia jahat, minimal kita masih bisa healing sambil makan enak 😌🍜
+      </p>
+
+      <p>
+        Pokoknya hari ini harus bahagia.
+        Karena kamu spesial,
+        walaupun kadang suka lemot kalau diajak mikir 😭
+      </p>
+
+      <p>
+        Happy Birthday once again bestieee 💜
+      </p>
     </div>
 
     <div class="footer">
