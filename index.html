@@ -1,351 +1,419 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Invitation ✨</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
     }
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #ff8dc7, #8fbcff, #b892ff);
-      background-size: 400% 400%;
-      animation: gradientMove 10s ease infinite;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding: 30px 20px;
+    html{
+      scroll-behavior:smooth;
     }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    body{
+      background:#0f0f14;
+      overflow-x:hidden;
+      color:white;
     }
 
-    .card {
-      width: 100%;
-      max-width: 420px;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 30px;
-      padding: 28px;
-      text-align: center;
-      color: white;
-      position: relative;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-      animation: floatCard 3s ease-in-out infinite;
+    /* BACKGROUND BLUR */
+    .bg-blur{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      overflow:hidden;
     }
 
-    @keyframes floatCard {
-      0%, 100% {
-        transform: translateY(0px);
+    .bg-blur img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:blur(35px) brightness(0.45);
+      transform:scale(1.2);
+    }
+
+    .overlay{
+      position:fixed;
+      inset:0;
+      background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.8)
+      );
+      z-index:-1;
+    }
+
+    .container{
+      width:100%;
+      max-width:480px;
+      margin:auto;
+      padding:20px;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      position:relative;
+    }
+
+    .badge{
+      background:rgba(255,255,255,0.15);
+      padding:10px 18px;
+      border-radius:999px;
+      font-size:13px;
+      backdrop-filter:blur(10px);
+      margin-bottom:22px;
+      border:1px solid rgba(255,255,255,0.15);
+    }
+
+    .cover{
+      width:100%;
+      height:520px;
+      border-radius:32px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:0 20px 40px rgba(0,0,0,0.4);
+      margin-bottom:25px;
+      animation:fadeUp 1s ease;
+    }
+
+    .cover img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .cover::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.75),
+        transparent
+      );
+    }
+
+    .cover-text{
+      position:absolute;
+      bottom:25px;
+      left:25px;
+      z-index:2;
+      text-align:left;
+    }
+
+    .cover-text h1{
+      font-size:2.3rem;
+      font-weight:800;
+      line-height:1.1;
+    }
+
+    .cover-text p{
+      margin-top:10px;
+      opacity:0.9;
+      font-size:0.95rem;
+    }
+
+    /* BUTTON */
+
+    .btn{
+      margin-top:25px;
+      background:white;
+      color:#6f4cff;
+      border:none;
+      padding:15px 24px;
+      border-radius:18px;
+      font-weight:700;
+      cursor:pointer;
+      font-size:15px;
+      transition:0.3s;
+      box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover{
+      transform:scale(1.05);
+    }
+
+    /* EVENT */
+
+    .card{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(18px);
+      border-radius:28px;
+      padding:25px;
+      margin-top:25px;
+      animation:fadeUp 1s ease;
+    }
+
+    .card h2{
+      margin-bottom:16px;
+      font-size:1.4rem;
+    }
+
+    .card p{
+      line-height:1.9;
+      opacity:0.92;
+      font-size:0.96rem;
+    }
+
+    /* GALLERY */
+
+    .gallery-title{
+      margin-top:45px;
+      margin-bottom:18px;
+      font-size:1.5rem;
+      font-weight:700;
+    }
+
+    .gallery{
+      display:flex;
+      gap:16px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding-bottom:10px;
+    }
+
+    .gallery::-webkit-scrollbar{
+      display:none;
+    }
+
+    .gallery img{
+      min-width:240px;
+      height:320px;
+      object-fit:cover;
+      border-radius:28px;
+      scroll-snap-align:center;
+      transition:0.35s;
+      cursor:pointer;
+      box-shadow:0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    .gallery img:hover{
+      transform:scale(1.03);
+    }
+
+    /* LONG MESSAGE */
+
+    .message{
+      margin-top:45px;
+    }
+
+    .message p{
+      margin-top:16px;
+      line-height:2;
+      opacity:0.9;
+      font-size:0.97rem;
+    }
+
+    /* MUSIC */
+
+    .music-button{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      border:none;
+      background:white;
+      font-size:20px;
+      cursor:pointer;
+      z-index:99;
+      box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.9);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:999;
+      padding:20px;
+    }
+
+    .lightbox img{
+      width:100%;
+      max-width:500px;
+      border-radius:24px;
+    }
+
+    /* ANIMATION */
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(30px);
       }
-      50% {
-        transform: translateY(-8px);
+      to{
+        opacity:1;
+        transform:translateY(0);
       }
     }
 
-    .badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.25);
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 13px;
-      margin-bottom: 18px;
-      font-weight: 600;
-    }
-
-    .photo {
-      width: 150px;
-      height: 150px;
-      margin: auto;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 5px solid rgba(255,255,255,0.5);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      margin-bottom: 20px;
-    }
-
-    .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    h1 {
-      font-size: 2.1rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 10px;
-    }
-
-    .nickname {
-      color: #fff8a6;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-
-    p {
-      font-size: 0.96rem;
-      line-height: 1.7;
-      opacity: 0.95;
-      margin-top: 10px;
-    }
-
-    .highlight {
-      font-weight: 700;
-      color: #fff8a6;
-    }
-
-    .btn {
-      margin-top: 25px;
-      display: inline-block;
-      background: white;
-      color: #8a4fff;
-      padding: 14px 24px;
-      border-radius: 16px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: 0.3s ease;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-      background: #fff8a6;
-    }
-
-    .emoji {
-      position: absolute;
-      font-size: 24px;
-      animation: floatEmoji 5s linear infinite;
-      opacity: 0.8;
-    }
-
-    @keyframes floatEmoji {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-      }
-      100% {
-        transform: translateY(-120px) rotate(360deg);
-      }
-    }
-
-    .long-message {
-      margin-top: 28px;
-      text-align: left;
-      background: rgba(255,255,255,0.12);
-      padding: 22px;
-      border-radius: 24px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.18);
-    }
-
-    .long-message h2 {
-      margin-bottom: 14px;
-      font-size: 1.2rem;
-      text-align: center;
-    }
-
-    .long-message p {
-      margin-bottom: 18px;
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
-    .footer {
-      margin-top: 20px;
-      font-size: 12px;
-      opacity: 0.8;
-    }
-
-    .event-box {
-      margin-top: 24px;
-      background: rgba(255,255,255,0.15);
-      padding: 20px;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.2);
-      text-align: left;
-    }
-
-    .event-box h3 {
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-
-    .event-box p {
-      line-height: 1.8;
-      font-size: 0.95rem;
-    }
-
-    .music-note {
-      margin-top: 12px;
-      font-size: 14px;
-      opacity: 0.85;
-    }
-
-    .album {
-      margin-top: 20px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .album img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 18px;
-      border: 3px solid rgba(255,255,255,0.3);
-      transition: 0.3s ease;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    }
-
-    .album img:hover {
-      transform: scale(1.05) rotate(2deg);
-    }
-
-    @media(max-width: 480px) {
-      .card {
-        padding: 22px;
-      }
-
-      h1 {
-        font-size: 1.7rem;
-      }
-
-      .photo {
-        width: 130px;
-        height: 130px;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <div class="emoji" style="left:10%; animation-duration:6s;">🎉</div>
-  <div class="emoji" style="left:30%; animation-duration:8s;">🎂</div>
-  <div class="emoji" style="left:50%; animation-duration:7s;">💅</div>
-  <div class="emoji" style="left:70%; animation-duration:9s;">🕺</div>
-  <div class="emoji" style="left:90%; animation-duration:6.5s;">✨</div>
+  <!-- BACKGROUND -->
+  <div class="bg-blur">
+    <img src="images/foto1.jpg">
+  </div>
 
-  <div class="card">
-    <div class="badge">💌 YOU'RE INVITED 💌</div>
+  <div class="overlay"></div>
 
-    <div class="photo">
-      <!-- FOTO UTAMA -->
-      <img src="foto1.jpg" alt="Foto Teman">
-    </div>
+  <div class="container">
 
-    <!-- ALBUM FOTO -->
-    <div class="album">
-      <img src="foto2.jpg" alt="Foto 2">
-      <img src="foto3.jpg" alt="Foto 3">
-      <img src="foto4.jpg" alt="Foto 4">
-      <img src="foto5.jpg" alt="Foto 5">
-    </div>
+    <!-- HERO -->
+    <section class="hero">
 
-    <h1>Birthday Party <br><span class="nickname">Bestieee 🎂</span></h1>
+      <div class="badge">
+        💌 YOU ARE INVITED
+      </div>
 
-    <p>
-      Hai bestieee ✨
-      <br><br>
-      Dengan penuh kebahagiaan, kekacauan,
-      dan sedikit overthinking 😭
-      kamu resmi diundang ke acara ulang tahun paling aesthetic tahun ini 💜
-    </p>
+      <div class="cover">
 
-    <p>
-      Semoga panjang umur, sehat selalu,
-      saldo e-wallet tidak pernah kritis,
-      dan muka tetap glowing walaupun sering begadang scrolling TikTok sampe subuh 🫠
-    </p>
+        <!-- FOTO PORTRAIT COVER -->
+        <img src="images/foto1.jpg">
 
-    <p>
-      Jangan lupa traktir ya,
-      karena bertambah umur artinya bertambah juga kewajiban mentraktir teman 😌☕
-    </p>
+        <div class="cover-text">
+          <h1>Birthday<br>Party 🎂</h1>
 
-    <a href="#lokasi" class="btn">🎉 Lihat Detail Acara</a>
+          <p>
+            another year older,
+            still iconic ✨
+          </p>
+        </div>
 
-    <div class="event-box">
-      <h3>📅 Detail Acara</h3>
-      <p>
-        🗓️ Sabtu, 25 Mei 2026
-        <br>⏰ 19.00 WIB sampai lupa waktu
-        <br>📍 Cafe Senja & Cerita
-        <br>👗 Dresscode: Putih / Pastel
-      </p>
-    </div>
+      </div>
 
-    <div class="music-note">
-      🎵 “Hari ini bukan hari biasa, karena dunia pernah beruntung punya kamu.”
-    </div>
+      <button class="btn" onclick="document.getElementById('event').scrollIntoView()">
+        🎉 Open Invitation
+      </button>
 
-    <div class="long-message">
-      <h2>📜 Special Message For You</h2>
+    </section>
+
+    <!-- EVENT -->
+    <section id="event" class="card">
+
+      <h2>📅 Event Details</h2>
 
       <p>
-        Hari ini dunia officially bertambah satu manusia absurd yang usianya naik,
-        tapi tingkahnya masih sama 😭✨
+        🗓 Saturday, 25 May 2026
+        <br>
+        ⏰ 19.00 WIB until tired
+        <br>
+        📍 Cafe Senja & Cerita
+        <br>
+        👗 Dresscode: White / Pastel
       </p>
 
+    </section>
+
+    <!-- GALLERY -->
+    <h2 class="gallery-title">
+      📸 Our Memories
+    </h2>
+
+    <div class="gallery">
+
+      <!-- FOTO CANDID -->
+      <img src="images/foto2.jpg" onclick="openLightbox(this.src)">
+      <img src="images/foto3.jpg" onclick="openLightbox(this.src)">
+      <img src="images/foto4.jpg" onclick="openLightbox(this.src)">
+      <img src="images/foto5.jpg" onclick="openLightbox(this.src)">
+      <img src="images/foto6.jpg" onclick="openLightbox(this.src)">
+
+    </div>
+
+    <!-- MESSAGE -->
+    <section class="message card">
+
+      <h2>💜 A Little Message</h2>
+
       <p>
-        Makasih udah jadi teman yang selalu ada,
-        selalu bikin ketawa,
-        selalu support walaupun kadang sama-sama bingung hidup mau dibawa kemana 🫠
+        Happy birthday buat manusia paling random,
+        paling ribut,
+        paling chaos,
+        tapi juga paling seru 😭✨
+      </p>
+
+      <p>
+        Makasih udah selalu ada,
+        jadi tempat cerita,
+        jadi teman healing,
+        dan jadi partner ketawa paling absurd.
       </p>
 
       <p>
         Semoga tahun ini:
-        <br>✨ Rezeki makin lancar
-        <br>✨ Mental makin kuat
-        <br>✨ Tidur makin cukup
-        <br>✨ Drama makin jauh
-        <br>✨ Dan semoga crush kamu tidak cuma ngelike story 🙏
+        <br>✨ hidup makin bahagia
+        <br>✨ rezeki makin lancar
+        <br>✨ mental makin kuat
+        <br>✨ dan semoga crush kamu sadar diri 🙏
       </p>
 
       <p>
-        Jangan capek jadi orang baik ya.
-        Kalau dunia jahat, minimal kita masih bisa healing sambil makan enak 😌🍜
+        Enjoy your special day bestieee 💖
       </p>
 
-      <p>
-        Pokoknya hari ini harus bahagia.
-        Karena kamu spesial,
-        walaupun kadang suka lemot kalau diajak mikir 😭
-      </p>
+    </section>
 
-      <p>
-        Happy Birthday once again bestieee 💜
-      </p>
-    </div>
+    <div style="height:100px"></div>
 
-    <div class="footer">
-      dibuat penuh cinta + sedikit roasting 💜
-    </div>
   </div>
 
-  <!-- MUSIK -->
-  <audio id="musik" loop>
-    <source src="lagu.mp3" type="audio/mpeg">
+  <!-- MUSIC -->
+  <audio id="music" loop>
+    <source src="music/lagu.mp3" type="audio/mpeg">
   </audio>
 
+  <button class="music-button" onclick="playMusic()">
+    🎵
+  </button>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img">
+  </div>
+
   <script>
-    window.addEventListener('click', () => {
-      const musik = document.getElementById('musik');
-      musik.play();
-    }, { once: true });
+
+    // MUSIC
+    function playMusic(){
+      document.getElementById('music').play();
+    }
+
+    // LIGHTBOX
+    function openLightbox(src){
+      document.getElementById('lightbox').style.display='flex';
+      document.getElementById('lightbox-img').src=src;
+    }
+
+    function closeLightbox(){
+      document.getElementById('lightbox').style.display='none';
+    }
+
   </script>
 
 </body>
